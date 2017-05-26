@@ -1,4 +1,13 @@
 
+*   Skip large data chunks incrementally
+
+    data should be incrementally (as we receive the data) released from the memory (buffer),
+    instead of releasing single big chunk of data once it's buffered entirely
+    In specific case, this resolves in peak memory allocation of ~300MB (depends on settings)
+    while parsing 2GB file instead of previous peak allocation of 2GB of memory;
+
+    *fogine*
+
 *   Add a new `skip` operation.
 
     This new operation allows to easily `skip` a specific number of bytes. It
