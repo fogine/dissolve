@@ -160,6 +160,13 @@ Dissolve.prototype._transform = function _transform(input, encoding, done) {
     }
 
     if (this._buffer.length - offset < length) {
+      //if we encounter a job of "skip" type with defined large byte length,
+      //we should not wait for the data of the length to get buffered
+      //but rather incrementally erase ("skip") received data.
+      if (job.type === 'skip' && offset === 0) {
+        offset += this._buffer.length;
+        job.length = job.length - this._buffer.length;
+      }
       break;
     }
 
