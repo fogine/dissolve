@@ -1,3 +1,8 @@
+*   Add `offset` property
+
+    adds Dissolve instance public `offset` property containing current offset
+
+    **SamyPesse**
 
 *   Skip large data chunks incrementally
 
