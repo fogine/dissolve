@@ -164,7 +164,7 @@ Dissolve.prototype._transform = function _transform(input, encoding, done) {
       //we should not wait for the data of the length to get buffered
       //but rather incrementally erase ("skip") received data.
       if (job.type === 'skip' && offset === 0) {
-        offset += this._buffer.length;
+        moveOffset(this._buffer.length);
         job.length = job.length - this._buffer.length;
       }
       break;
